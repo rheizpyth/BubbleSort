@@ -8,9 +8,8 @@ class MainBubble {
         int n = scanner.nextInt();
         int [] arrayBubbleSort = new int[n];
         
-        System.out.println("\n");
         for (int i = 0; i < arrayBubbleSort.length; i++) {
-            System.out.print("Enter the numbers: ");
+            System.out.print("\nEnter the numbers: ");
             arrayBubbleSort[i] = scanner.nextInt();
             while (arrayBubbleSort[i] < 0) {
                 System.out.print("Please enter a whole number: ");
@@ -26,7 +25,15 @@ class MainBubble {
                 }
             }
         }
-        System.out.println("\nSorted numbers: " + java.util.Arrays.toString(arrayBubbleSort));
+        System.out.printf("\nSorted numbers: [");
+        for (int i = 0; i < arrayBubbleSort.length; i++) {
+             System.out.print(arrayBubbleSort[i]);
+             if (i < arrayBubbleSort.length - 1) {
+                System.out.print(", ");
+        
+    }
+}                                 
+        System.out.print("]");
         scanner.close();
     }
 }
