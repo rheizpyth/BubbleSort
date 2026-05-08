@@ -1,20 +1,32 @@
 import java.util.Scanner;
 
-class Main {
+class MainBubble {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
-        int [] arrayBubbleSort = new int[5];
-        System.out.println("Enter 5 numbers to sort:");
-        for (int i = 0; i < 5; i++) {
+        System.out.print("Enter how many numbers you want to sort: ");
+        int n = scanner.nextInt();
+        int [] arrayBubbleSort = new int[n];
+        
+        System.out.println("\n");
+        for (int i = 0; i < arrayBubbleSort.length; i++) {
+            System.out.print("Enter the numbers: ");
             arrayBubbleSort[i] = scanner.nextInt();
             while (arrayBubbleSort[i] < 0) {
-                System.out.println("Please enter a whole number:");
+                System.out.print("Please enter a whole number: ");
                 arrayBubbleSort[i] = scanner.nextInt();
             }
         }
-        System.out.println("Sorted Elements:");
-
+        for (int i = 0; i < arrayBubbleSort.length - 1; i++) {
+            for (int j = 0; j < arrayBubbleSort.length - i - 1; j++) {
+                if (arrayBubbleSort[j] > arrayBubbleSort[j + 1]) {
+                    int temp = arrayBubbleSort[j];
+                    arrayBubbleSort[j] = arrayBubbleSort[j + 1];
+                    arrayBubbleSort[j + 1] = temp;
+                }
+            }
+        }
+        System.out.println("\nSorted numbers: " + java.util.Arrays.toString(arrayBubbleSort));
         scanner.close();
     }
 }
