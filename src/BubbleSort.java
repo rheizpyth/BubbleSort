@@ -1,8 +1,9 @@
-import java.util.Scanner;
+import java.util.Arrays;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JDialog;
+import java.util.Scanner;
 
 public class BubbleSort {
 
@@ -39,14 +40,15 @@ public class BubbleSort {
             array[i] = scanner.nextInt();
         }
 
-        System.out.println("\nOriginal array: " + arrayToString(array));
+        System.out.println("\nOriginal array: " + Arrays.toString(array));
         System.out.println("\n===== Sorting Steps =====");
 
         StringBuilder steps = new StringBuilder();
         int laps = bubbleSort(array, steps);
 
         System.out.println(steps.toString());
-        System.out.println("Sorted array : " + arrayToString(array));
+        System.out.println("===== Results =====");
+        System.out.println("Sorted array : " + Arrays.toString(array));
         System.out.println("Laps taken   : " + laps);
 
         scanner.close();
@@ -66,7 +68,7 @@ public class BubbleSort {
             array[i] = Integer.parseInt(numberInput.trim());
         }
 
-        String original = arrayToString(array);
+        String original = Arrays.toString(array);
 
         StringBuilder steps = new StringBuilder();
         int laps = bubbleSort(array, steps);
@@ -75,6 +77,8 @@ public class BubbleSort {
         sb.append("Original array: ").append(original).append("\n");
         sb.append("\n===== Sorting Steps =====\n");
         sb.append(steps);
+        sb.append("\n===== Results =====\n");
+        sb.append("\nSorted array: ").append(Arrays.toString(array));
         sb.append("\nLaps taken: ").append(laps);
 
         JTextArea textArea = new JTextArea(sb.toString(), 18, 32);
@@ -83,7 +87,7 @@ public class BubbleSort {
 
         JOptionPane.showMessageDialog(null, scrollPane, "Bubble Sort - Steps", JOptionPane.INFORMATION_MESSAGE);
 
-        JOptionPane.showMessageDialog(null, "The sorted array is: " + arrayToString(array));
+        JOptionPane.showMessageDialog(null, "The sorted array is: " + Arrays.toString(array));
     }
 
     static int bubbleSort(int[] array, StringBuilder steps) {
@@ -94,7 +98,7 @@ public class BubbleSort {
             laps++;
 
             steps.append("\n");
-            steps.append("Lap ").append(laps).append(" - before: ").append(arrayToString(array)).append("\n");
+            steps.append("Lap ").append(laps).append(" - before: ").append(Arrays.toString(array)).append("\n");
 
             for (int j = 0; j < array.length - i - 1; j++) {
                 if (array[j] > array[j + 1]) {
@@ -107,26 +111,16 @@ public class BubbleSort {
                     swapped = true;
 
                     steps.append("  Swapped ").append(a).append(" and ").append(b)
-                            .append(" --> ").append(arrayToString(array)).append("\n");
+                            .append(" --> ").append(Arrays.toString(array)).append("\n");
                 }
             }
 
             if (!swapped) {
-                steps.append("  No swaps - array is already sorted. Stopping early.\n");
+                steps.append("  No swaps. Array is already sorted.\n");
                 break;
             }
         }
 
         return laps;
-    }
-
-    static String arrayToString(int[] array) {
-        StringBuilder sb = new StringBuilder("[");
-        for (int i = 0; i < array.length; i++) {
-            sb.append(array[i]);
-            if (i < array.length - 1)
-                sb.append(", ");
-        }
-        return sb.append("]").toString();
     }
 }
