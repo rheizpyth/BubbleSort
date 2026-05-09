@@ -47,7 +47,6 @@ public class ConsoleOutputScanner {
                 break;
             }
         }
-
         return laps;
     }
 }
