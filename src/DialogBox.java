@@ -1,4 +1,4 @@
-import javax.swing.JOptionPane;   
+import javax.swing.JOptionPane;
 
 public class DialogBox {
 
@@ -16,7 +16,7 @@ public class DialogBox {
         int laps = bubbleSort(array);
 
 
-        StringBuilder sorted = new StringBuilder("Sorted numbers:\n");
+
         for (int i : array) {
             sorted.append(i).append(" ");
         }
@@ -38,8 +38,8 @@ public class DialogBox {
                     array[j] = array[j + 1];
                     array[j + 1] = temp;
                     swapped = true;
-                }
-            }
+         
+                
 
             if (!swapped) break;
         }
