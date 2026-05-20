@@ -32,10 +32,17 @@ public class BubbleSort {
 
     static void runConsole() {
         Scanner scanner = new Scanner(System.in);
+        int size = 0;
 
-        // Get array size
+        // Error validation for array size input
         System.out.print("How many numbers do you want to sort? ");
-        int size = scanner.nextInt();
+        size = scanner.nextInt();
+        while (size <= 0) {
+            System.out.println("  !!  Please enter a valid array size (positive integer).");
+
+            System.out.print("How many numbers do you want to sort? ");
+            size = scanner.nextInt();
+        }
 
         // Populate the array
         int[] array = new int[size];
@@ -61,18 +68,29 @@ public class BubbleSort {
     }
 
     static void runDialog() {
-        // Get array size
+        int size = 0;
+
+        // Error validation for dialog array size
         String input = JOptionPane.showInputDialog("How many numbers do you want to sort?");
-        if (input == null)
-            return;
-        int size = Integer.parseInt(input.trim());
+        size = Integer.parseInt(input);
+        while (size <= 0) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Please enter a valid array size (positive integer).",
+                    "Invalid Size",
+                    JOptionPane.WARNING_MESSAGE);
+
+            input = JOptionPane.showInputDialog("How many numbers do you want to sort?");
+            size = Integer.parseInt(input);
+        }
 
         // Populate the array
         int[] array = new int[size];
         for (int i = 0; i < size; i++) {
             String numberInput = JOptionPane.showInputDialog("Enter number #" + (i + 1) + ":");
-            if (numberInput == null)
+            if (numberInput == null) {
                 return;
+            }
             array[i] = Integer.parseInt(numberInput.trim());
         }
 
